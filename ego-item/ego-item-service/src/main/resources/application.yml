@@ -4,13 +4,20 @@ spring:
  application:
   name: item-service
  datasource:
-  url: jdbc:mysql://localhost:3306/ego
+  url: jdbc:mysql://localhost:3306/ego?useUnicode=true&characterEncoding=utf8
   driver-class-name: com.mysql.jdbc.Driver
   username: root
   password: root
   hikari:
    maximum-pool-size: 30
    minimum-idle: 10
+ rabbitmq:
+  host: 172.23.35.155
+  username: ego
+  password: ego
+  virtual-host: /ego
+  template:
+   exchange: ego.item.exchange
 eureka:
  client:
   service-url:
@@ -25,3 +32,4 @@ mybatis:
  configuration:
   log-impl:
    org.apache.ibatis.logging.stdout.StdOutImpl
+  map-underscore-to-camel-case: true

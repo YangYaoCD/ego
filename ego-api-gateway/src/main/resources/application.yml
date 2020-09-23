@@ -20,6 +20,16 @@ zuul:
  retryable: true
  routes:
   item-service: /item/**
+  search-service: /search/**
+  user-service: /user/**
+  auth-service: /auth/**
+  cart-service: /cart/**
+  order-service: /order/**
+  seckill-service: /seckill/**
+ ignored-services: upload-service      #zuul关闭上传文件服务
+ add-host-header: true     #携带请求真是host
+ sensitive-headers:  #不要过滤任何响应头
+#  upload-service: /upload/**
 ribbon:
  ConnectTimeout: 250 # 连接超时时间(ms)
  ReadTimeout: 2000 # 通信超时时间(ms)
@@ -33,3 +43,16 @@ hystrix:
     isolation:
      thread:
       timeoutInMillisecond: 100000 # 熔断超时时长：10000ms
+ego:
+ filter:
+  pref: http://api.ego.com
+  allowPaths:
+   - /api/auth
+   - /api/search
+   - /api/user/register
+   - /api/user/check
+   - /api/user/code
+   - /api/item
+ jwt:
+  pubKeyPath: D:\\JetBrains\\rsa\\rsa.pub # 公钥地址
+  cookieName: EGO_TOKEN

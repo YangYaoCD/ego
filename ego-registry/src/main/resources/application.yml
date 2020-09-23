@@ -9,7 +9,7 @@ eureka:
     register-with-eureka: false
     service-url:
       #defaultZone: http://admin:enjoy@localhost:7001/eureka,http://admin:enjoy@eureka2:7002/eureka,http://admin:enjoy@eureka3:7003/eureka
-      defaultZone: http://@eureka1:${server.port}}/eureka
+      defaultZone: http://@eureka1:${server.port}/eureka
   instance: # eureak实例定义
     hostname: eureka1 # 定义 Eureka 实例所在的主机名称
 
